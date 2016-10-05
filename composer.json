@@ -1,0 +1,15 @@
+{
+    "name": "silverbackstudio/wp-widgets",
+    "description": "Silverback Studio Widget collection",
+    "authors": [
+        {
+            "name": "Brando Meniconi",
+            "email": "b.meniconi@silverbackstudio.it"
+        }
+    ],
+    "version": "1.0.0",
+    "require": {},
+    "autoload": {
+        "psr-4": {"Svbk\\WP\\Widgets\\": "src/"}
+    }
+}
