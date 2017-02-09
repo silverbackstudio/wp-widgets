@@ -2,11 +2,7 @@
 
 namespace Svbk\WP\Widgets;
 
-add_action( 'after_setup_theme', __NAMESPACE__.'\\load_texdomain' ) );
-
-public static function load_texdomain(){
-    load_textdomain( 'svbk-widgets', dirname(__DIR__).'/languages/svbk-widgets' . '-' . get_locale() . '.mo'   ); 
-}
+add_action( 'after_setup_theme', __NAMESPACE__.'\\Base::load_texdomain' );
 
 /**
  * Adds Foo_Widget widget.
@@ -25,6 +21,10 @@ abstract class Base extends \WP_Widget {
 			$this->args()
 		);
 	}
+
+    public static function load_texdomain(){
+        load_textdomain( 'svbk-widgets', dirname(__DIR__).'/languages/svbk-widgets' . '-' . get_locale() . '.mo'   ); 
+    }
 
     protected function title(){
         return __( 'Silverback Generic Widget', 'svbk-widgets' );
