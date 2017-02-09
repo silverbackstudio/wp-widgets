@@ -61,13 +61,44 @@ abstract class Base extends \WP_Widget {
     <?php
     }
     
+    protected function selectField($name, $value, $title, $options, $attr=array()){ ?>
+        <p>
+           <label for="<?php echo $this->get_field_id( $name ); ?>"><?php echo $title; ?></label> 
+           <select id="<?php echo $this->get_field_id( $name ); ?>" name="<?php echo $this->get_field_name( $name ); ?>" <?php $this->printAttrs($attr); ?> >
+               <?php foreach($options as $opt_value=>$opt_label): ?>
+                   <option value="<?php echo esc_attr($opt_value); ?>" <?php echo ($value == $opt_value)?'selected="selected"':''; ?>><?php echo esc_html($opt_label);  ?></option>
+               <?php endforeach; ?>
+           </select>
+        </p>
+    <?php
+    }    
+    
     protected function postSelect($name, $value, $title){ ?>
         <p>
            <input id="<?php echo $this->get_field_id( $name ); ?>" name="<?php echo $this->get_field_name( $name ); ?>" type="text" value="<?php echo esc_attr( $value ); ?>" <?php $this->printAttrs($attr); ?>/>
            <label for="<?php echo $this->get_field_id( $name ); ?>"><?php echo $title; ?></label>                     
         </p>
     <?php
-    }    
+    }  
+    
+    protected function pageSelect($name, $value, $title, $args=array()){ ?>
+        <p>
+           <label for="<?php echo $this->get_field_id( $name ); ?>"><?php echo $title; ?></label>                     
+           <?php 
+           
+           $args = wp_parse_args($args, array(
+                'name' => $this->get_field_name( $name ),
+                'id'=> $this->get_field_id( $name ),
+                'selected' => $value,
+                'class'=>'widefat'
+           ) );
+           
+           wp_dropdown_pages( $args ); 
+           
+           ?>
+        </p>
+    <?php
+    }      
 
     protected function printAttrs($attr, $defaults=array()){
 
@@ -91,7 +122,7 @@ abstract class Base extends \WP_Widget {
         }
     }
 
-    protected function sanitizeField($instance, $name, $sanitize_function='strip_tags', $default=""){
+    protected function sanitizeField($instance, $name, $sanitize_function='sanitize_text_field', $default=""){
         
         if( empty( $instance[$name])){
             return $default;
