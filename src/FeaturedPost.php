@@ -48,7 +48,7 @@ class FeaturedPost extends Base {
 	 */
 	public function form( $instance ) {
             $this->textField('title', $this->fieldValue( $instance, 'title', __( 'New title', 'svbk-widgets' ) ), __( 'Title:', 'svbk-widgets') );
-            $this->textField('featured_post', $this->fieldValue( $instance, 'featured_post'), __( 'Featured Post:', 'svbk-widgets') );
+            $this->textField('featured_post', $this->fieldValue( $instance, 'featured_post'), __( 'Featured Post', 'svbk-widgets').':' );
 	}
 
 	/**

@@ -2,7 +2,11 @@
 
 namespace Svbk\WP\Widgets;
 
-load_textdomain( 'svbk-widgets', dirname(__DIR__).'/languages/svbk-shortcakes' . '-' . get_locale() . '.mo'   ); 
+add_action( 'after_setup_theme', __NAMESPACE__.'\\load_texdomain' ) );
+
+public static function load_texdomain(){
+    load_textdomain( 'svbk-widgets', dirname(__DIR__).'/languages/svbk-widgets' . '-' . get_locale() . '.mo'   ); 
+}
 
 /**
  * Adds Foo_Widget widget.
@@ -23,7 +27,7 @@ abstract class Base extends \WP_Widget {
 	}
 
     protected function title(){
-        return __( 'Silverback Base Title', 'svbk-widgets' );
+        return __( 'Silverback Generic Widget', 'svbk-widgets' );
     }
     
     protected function args(){

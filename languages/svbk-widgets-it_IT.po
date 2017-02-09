@@ -1,0 +1,72 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Silverback widgets\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-02-09 09:40+0000\n"
+"PO-Revision-Date: 2017-02-09 09:40+0000\n"
+"Last-Translator: SilverbackStudio <webmaster@silverbackstudio.it>\n"
+"Language-Team: Italian\n"
+"Language: it-IT\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#: src/Base.php:30
+msgid "Silverback Generic Widget"
+msgstr "Widget generico di Silverback"
+
+#: src/Base.php:34
+msgid "Insert Description"
+msgstr "Inserisci descrizione"
+
+#: src/FeaturedPost.php:15 src/FeaturedPost.php:51
+msgid "Featured Post"
+msgstr "Post in evidenza"
+
+#: src/FeaturedPost.php:50 src/Jetpack_RelatedPosts.php:60
+#: src/SelectLinker.php:48
+msgid "New title"
+msgstr "Nuovo titolo"
+
+#: src/FeaturedPost.php:50 src/Jetpack_RelatedPosts.php:60
+#: src/SelectLinker.php:48
+msgid "Title:"
+msgstr "Titolo:"
+
+#: src/Jetpack_RelatedPosts.php:14
+msgid "Jetpack Related Posts"
+msgstr "Articoli correlati di Jetpack"
+
+#: src/SelectLinker.php:15
+msgid "Select Linker"
+msgstr "Menu a Select"
+
+#: src/SelectLinker.php:19
+msgid "Displays a menu in a select"
+msgstr "Mostra il menu in una select"
+
+#: src/SelectLinker.php:50
+msgid "Select Menu:"
+msgstr "Seleziona il menu:"
+
+#. Name of the plugin
+msgid "Silverback widgets"
+msgstr "Silverback Widgets"
+
+#. Description of the plugin
+msgid "Silverback's Widget Package"
+msgstr "Pacchetto Widget di Silverback Studio"
+
+#. URI of the plugin
+msgid "https://gitlab.com/silverbackstudio/wp-widgets"
+msgstr "https://gitlab.com/silverbackstudio/wp-widgets"
+
+#. Author of the plugin
+msgid "Silverback Studio"
+msgstr "Silverback Studio"
+
+#. Author URI of the plugin
+msgid "http://www.silverbackstudio.it/"
+msgstr "http://www.silverbackstudio.it/"
