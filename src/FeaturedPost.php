@@ -9,7 +9,8 @@ namespace Svbk\WP\Widgets;
 class FeaturedPost extends Base {
 
     public $widget_id = 'svbk_feaured_post';
-
+    public $template = 'template-parts/thumb';
+    public $excerpt_lenght = 15;
 
     protected function title(){
         return __( 'Featured Post', 'svbk-widgets' );
@@ -25,12 +26,24 @@ class FeaturedPost extends Base {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
 		}
 
-        $the_query = new \WP_Query( array('p' => $instance['featured_post'] ) );
+        $query_args = array(
+            'posts_per_page' => 1, 
+            'orderby'=>'date'
+        );
         
+        if(is_single()){
+            $query_args['post__not_in'] = array(get_the_ID());
+        }
+
+        $the_query = new \WP_Query( $query_args );
+        
+        add_filter( 'excerpt_length', array($this, 'excerpt_length'), 99 );
         // Il Loop
         while ( $the_query->have_posts() ) : $the_query->the_post();
-        	get_template_part( apply_filters('svbk_widget_featured_post_template', 'template-parts/thumb' ), get_post_type() );
+        	get_template_part( $this->template, get_post_type() );
         endwhile;
+        remove_filter( 'excerpt_length', array($this, 'excerpt_length'), 99 );
+        
         
         // Ripristina Query & Post Data originali
         wp_reset_query();
@@ -38,6 +51,10 @@ class FeaturedPost extends Base {
 
 		echo $args['after_widget'];
 	}
+	
+    public function excerpt_length( $length ) {
+	    return $this->excerpt_lenght;
+    }	
 
 	/**
 	 * Back-end widget form.
@@ -48,7 +65,6 @@ class FeaturedPost extends Base {
 	 */
 	public function form( $instance ) {
             $this->textField('title', $this->fieldValue( $instance, 'title', __( 'New title', 'svbk-widgets' ) ), __( 'Title:', 'svbk-widgets') );
-            $this->textField('featured_post', $this->fieldValue( $instance, 'featured_post'), __( 'Featured Post', 'svbk-widgets').':' );
 	}
 
 	/**
@@ -65,7 +81,6 @@ class FeaturedPost extends Base {
 	    
         $instance = array();
         
-        $instance['featured_post'] = $this->sanitizeField($new_instance, 'featured_post', 'intval');
         $instance['title'] = $this->sanitizeField($new_instance, 'title');
         
         return $instance;	    
