@@ -10,17 +10,35 @@ add_action( 'after_setup_theme', __NAMESPACE__.'\\Base::load_texdomain' );
 abstract class Base extends \WP_Widget {
 
     public $widget_id = 'svbk_widget_base';
+    public $title = '';
 
 	/**
 	 * Register widget with WordPress.
 	 */
-	function __construct() {
-		parent::__construct(
+	function __construct($properties) {
+	    
+        foreach($properties as $properties => $value){
+            if(property_exists($this, $properties)) {
+                $this->$properties = $value;
+            }
+        }  	    
+	    
+	    parent::__construct(
 			$this->widget_id, // Base ID
-			$this->title(), // Name
+			$this->title ?: $this->title(), // Name
 			$this->args()
 		);
+		
 	}
+	
+    static function register($options=array()){
+        $class = get_called_class();
+        
+        $instance = new $class($options);
+        
+        register_widget($instance);
+        
+    }	
 
     public static function load_texdomain(){
         load_textdomain( 'svbk-widgets', dirname(__DIR__).'/languages/svbk-widgets' . '-' . get_locale() . '.mo'   ); 
@@ -34,11 +52,8 @@ abstract class Base extends \WP_Widget {
         return array(  'description' => __( 'Insert Description', 'svbk-widgets' ), );
     }
 
-
     protected function translateField($name, $value){
-        
         return apply_filters( 'widget_translate_field', $value, $name, $this->id);
-        
     }
 
     protected function textField($name, $value, $title, $attr=array()){ ?>
