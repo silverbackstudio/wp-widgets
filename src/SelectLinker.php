@@ -8,9 +8,8 @@ namespace Svbk\WP\Widgets;
  */
 class SelectLinker extends Base {
 
-    public $widget_id = 'svbk_select_linker';
-
-
+    public $id_base = 'svbk_select_linker';
+    
     protected function title(){
         return __( 'Select Linker', 'svbk-widgets' );
     }

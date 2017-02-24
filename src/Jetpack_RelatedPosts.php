@@ -8,7 +8,7 @@ namespace Svbk\WP\Widgets;
  */
 class Jetpack_RelatedPosts extends Base {
 
-    public $widget_id = 'svbk_jp_related_posts';
+    public $id_base = 'svbk_jp_related_posts';
 
     protected function title(){
         return __( 'Jetpack Related Posts', 'svbk-widgets' );

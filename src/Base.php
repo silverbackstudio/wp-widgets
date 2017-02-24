@@ -9,32 +9,31 @@ add_action( 'after_setup_theme', __NAMESPACE__.'\\Base::load_texdomain' );
  */
 abstract class Base extends \WP_Widget {
 
-    public $widget_id = 'svbk_widget_base';
-    public $title = '';
+    public $id_base = 'svbk_widget_base';
 
 	/**
 	 * Register widget with WordPress.
 	 */
-	function __construct($properties) {
-	    
-        foreach($properties as $properties => $value){
-            if(property_exists($this, $properties)) {
-                $this->$properties = $value;
-            }
-        }  	    
-	    
+	function __construct() {
 	    parent::__construct(
-			$this->widget_id, // Base ID
-			$this->title ?: $this->title(), // Name
+			$this->id_base, // Base ID
+			$this->name ?: $this->title(), // Name
 			$this->args()
 		);
 		
 	}
 	
     static function register($options=array()){
+        
         $class = get_called_class();
         
-        $instance = new $class($options);
+        $instance = new $class;
+        
+        foreach($properties as $property => $value){
+            if(property_exists($instance, $property)) {
+                $instance->$property = $value;
+            }
+        }  	        
         
         register_widget($instance);
         

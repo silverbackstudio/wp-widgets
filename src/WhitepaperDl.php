@@ -8,7 +8,7 @@ namespace Svbk\WP\Themes\UfficioBrevetti\Widgets;
  */
 class WhitepaperDl extends \Svbk\WP\Widgets\Base {
 
-    public $widget_id = 'svbk_whitepaper_dl';
+    public $id_base = 'svbk_whitepaper_dl';
 
     public static $mc_apikey = '';
     public static $mc_endpoint = '';    

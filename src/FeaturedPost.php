@@ -8,7 +8,7 @@ namespace Svbk\WP\Widgets;
  */
 class FeaturedPost extends Base {
 
-    public $widget_id = 'svbk_feaured_post';
+    public $id_base = 'svbk_feaured_post';
     public $template = 'template-parts/thumb';
     public $excerpt_lenght = 15;
 
