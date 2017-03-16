@@ -23,7 +23,7 @@ abstract class Base extends \WP_Widget {
 		
 	}
 	
-    static function register($options=array()){
+    static function register($properties=array()){
         
         $class = get_called_class();
         
@@ -37,6 +37,7 @@ abstract class Base extends \WP_Widget {
         
         register_widget($instance);
         
+        return $instance;
     }	
 
     public static function load_texdomain(){
