@@ -14,7 +14,7 @@ abstract class Base extends \WP_Widget {
 	/**
 	 * Register widget with WordPress.
 	 */
-	function __construct() {
+	public function __construct() {
 	    parent::__construct(
 			$this->id_base, // Base ID
 			$this->name ?: $this->title(), // Name
