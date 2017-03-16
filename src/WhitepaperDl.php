@@ -56,7 +56,7 @@ class WhitepaperDl extends Base {
         
         $form = new $formClass;
         
-        $form->field_prefix = $this->id_base;
+        $form->field_prefix = 'form_'.$this->id_base;
         $form->action = $this->action;
         
         if($setSendParams) {
@@ -143,12 +143,26 @@ class WhitepaperDl extends Base {
         
         $instance['title'] = $this->sanitizeField($new_instance, 'title');
         $instance['privacy_link'] = $this->sanitizeField($new_instance, 'privacy_link');
-        $instance['description'] = $this->sanitizeField($new_instance, 'description');
+        $instance['description'] = $this->sanitizeField($new_instance, 'description', 'wp_kses_post');
         $instance['form_title'] = $this->sanitizeField($new_instance, 'form_title');
         $instance['submit_button_label'] = $this->sanitizeField($new_instance, 'submit_button_label');
         $instance['file'] = $this->sanitizeField($new_instance, 'file', 'intval');
 
         return $instance;
+	}
+	
+	public function renderOutput($instance){
+	    
+	    $form = $this->getForm();
+        $form->index = $this->number;
+
+        $output = $form->renderParts( $this->action, $instance );  
+            
+        $output['beginPolicySubmit'] = '<div class="form-policy-submit-wrapper">';
+        $output['endPolicySubmit'] = '</div>';   
+	    
+	    return $output;
+	    
 	}
 	
 	public function widget( $args, $instance ) {
@@ -157,29 +171,22 @@ class WhitepaperDl extends Base {
 		
 		?>
 		<header class="widget-header">
-		    <h3 class="title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h3>
+		    <h2 class="title"><?php echo apply_filters( 'widget_title', $instance['title'] ); ?></h2>
 			<p class="description"><?php echo $instance['description'] ?></p>
 		</header>
         <?php
         
-        $form = $this->getForm();
-
-        $output = $form->renderParts( $this->action, $instance );  
-            
-        $output['beginPolicySubmit'] = '<div class="form-policy-submit-wrapper">';
-        $output['endPolicySubmit'] = '</div>';             
-            
-        echo '<div class="whitepaper-dl svbk-form-container" >';
+        echo '<div class="whitepaper-dl svbk-form-container" id="' . $this->id_base . '-container-' . $this->number .'" >';
         
-        echo '<a class="button svbk-show-content" href="#' . $this->id .'" >' . urldecode( $instance['submit_button_label'] ) . '</a>';
+        echo '<a class="button svbk-show-content" href="#' . $this->id_base . '-container-' . $this->number .'" >' . urldecode( $instance['submit_button_label'] ) . '</a>';
         echo '<div class="svbk-form-content">';
-        echo '<a class="button svbk-hide-content" href="#' . $this->id .'" ><span class="screen-reader-text">' . __('Close', 'svbk-shortcakes') . '</span></a>';
+        echo '<a class="button svbk-hide-content" href="#' . $this->id_base . '-container-' . $this->number .'" ><span class="screen-reader-text">' . __('Close', 'svbk-shortcakes') . '</span></a>';
         
         if($instance['form_title']){
             echo '<h3 class="form-title">'.$instance['form_title'].'</h3>';
         }
 
-        echo Helpers\Renderer::mergeParts($output, $this->renderOrder);
+        echo Helpers\Renderer::mergeParts($this->renderOutput($instance), $this->renderOrder);
         
         echo '</div>';
         echo '</div>';
