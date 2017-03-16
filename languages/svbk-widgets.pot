@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-09 09:40+0000\n"
+"POT-Creation-Date: 2017-03-16 14:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -14,42 +14,82 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco - https://localise.biz/"
 
-#: src/Base.php:30
-msgid "Silverback Generic Widget"
-msgstr ""
-
-#: src/Base.php:34
-msgid "Insert Description"
-msgstr ""
-
-#: src/FeaturedPost.php:15 src/FeaturedPost.php:51
-msgid "Featured Post"
-msgstr ""
-
-#: src/FeaturedPost.php:50 src/Jetpack_RelatedPosts.php:60
-#: src/SelectLinker.php:48
-msgid "New title"
-msgstr ""
-
-#: src/FeaturedPost.php:50 src/Jetpack_RelatedPosts.php:60
-#: src/SelectLinker.php:48
-msgid "Title:"
-msgstr ""
-
 #: src/Jetpack_RelatedPosts.php:14
 msgid "Jetpack Related Posts"
 msgstr ""
 
-#: src/SelectLinker.php:15
+#: src/Jetpack_RelatedPosts.php:60 src/SelectLinker.php:47
+#: src/FeaturedPost.php:67
+msgid "New title"
+msgstr ""
+
+#: src/Jetpack_RelatedPosts.php:60 src/SelectLinker.php:47
+#: src/FeaturedPost.php:67
+msgid "Title:"
+msgstr ""
+
+#: src/WhitepaperDl.php:46
+msgid "Whitepapers Download"
+msgstr ""
+
+#: src/WhitepaperDl.php:50
+msgid "Subscribe & download whitepaper widget"
+msgstr ""
+
+#: src/WhitepaperDl.php:122
+msgid "Widget title"
+msgstr ""
+
+#: src/WhitepaperDl.php:122
+msgid "Title"
+msgstr ""
+
+#: src/WhitepaperDl.php:123
+msgid "Description text"
+msgstr ""
+
+#: src/WhitepaperDl.php:123
+msgid "Description"
+msgstr ""
+
+#: src/WhitepaperDl.php:124
+msgid "Form Title"
+msgstr ""
+
+#: src/WhitepaperDl.php:125
+msgid "File ID"
+msgstr ""
+
+#: src/WhitepaperDl.php:126
+msgid "Submit button"
+msgstr ""
+
+#: src/WhitepaperDl.php:127
+msgid "Privacy Link"
+msgstr ""
+
+#: src/SelectLinker.php:14
 msgid "Select Linker"
 msgstr ""
 
-#: src/SelectLinker.php:19
+#: src/SelectLinker.php:18
 msgid "Displays a menu in a select"
 msgstr ""
 
-#: src/SelectLinker.php:50
+#: src/SelectLinker.php:49
 msgid "Select Menu:"
+msgstr ""
+
+#: src/FeaturedPost.php:16
+msgid "Featured Post"
+msgstr ""
+
+#: src/Base.php:48
+msgid "Silverback Generic Widget"
+msgstr ""
+
+#: src/Base.php:52
+msgid "Insert Description"
 msgstr ""
 
 #. Name of the plugin
