@@ -29,15 +29,11 @@ class WhitepaperDl extends Base {
         'formEnd'
     ); 
     
-    static function register($options=array()){
-        $instance = parent::register($options);
-        
-        $instance->hooks();
-        
-        return $instance;
-    }
     
     public function hooks(){
+        
+        parent::hooks();
+        
         add_action( "admin_post_nopriv_{$this->action}", array($this, 'processSubmission') );
         add_action( "admin_post_{$this->action}", array($this, 'processSubmission') );
     }
@@ -122,7 +118,7 @@ class WhitepaperDl extends Base {
             $this->textField('title', $this->fieldValue( $instance, 'title', __( 'Widget title', 'svbk-widgets' ) ), __( 'Title', 'svbk-widgets').':' );
             $this->textAreaField('description', $this->fieldValue( $instance, 'description', __( 'Description text', 'svbk-widgets' ) ), __( 'Description', 'svbk-widgets').':' );
             $this->textField('form_title', $this->fieldValue( $instance, 'form_title' ), __( 'Form Title', 'svbk-widgets').':' );
-            $this->textField('file', $this->fieldValue( $instance, 'file' ), __( 'File ID', 'svbk-widgets').':' );
+            $this->fileField('file', $this->fieldValue( $instance, 'file' ), __( 'Downoload File ID', 'svbk-widgets').':' );
             $this->textField('submit_button_label', $this->fieldValue( $instance, 'submit_button_label' ), __( 'Submit button', 'svbk-widgets').':' );
             $this->textField('privacy_link', $this->fieldValue( $instance, 'privacy_link' ), __( 'Privacy Link', 'svbk-widgets').':' );
 	}
@@ -180,7 +176,7 @@ class WhitepaperDl extends Base {
         
         echo '<a class="button svbk-show-content" href="#' . $this->id_base . '-container-' . $this->number .'" >' . urldecode( $instance['submit_button_label'] ) . '</a>';
         echo '<div class="svbk-form-content">';
-        echo '<a class="button svbk-hide-content" href="#' . $this->id_base . '-container-' . $this->number .'" ><span class="screen-reader-text">' . __('Close', 'svbk-shortcakes') . '</span></a>';
+        echo '<a class="button svbk-hide-content" href="#' . $this->id_base . '-container-' . $this->number .'" ><span>' . __('Close', 'svbk-shortcakes') . '</span></a>';
         
         if($instance['form_title']){
             echo '<h3 class="form-title">'.$instance['form_title'].'</h3>';
