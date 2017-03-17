@@ -2,6 +2,7 @@
 
 namespace Svbk\WP\Widgets;
 
+use Svbk\WP\Helpers;
 
 /**
  * Adds Foo_Widget widget.
@@ -28,13 +29,7 @@ class Jetpack_RelatedPosts extends Base {
     			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
     		}
     
-        	
-            $related = \Jetpack_RelatedPosts::init_raw()
-                ->set_query_name( 'jetpackme-svbk-widget' ) // Optional, name can be anything
-                ->get_for_post_id(
-                    get_the_ID(),
-                    array( 'size' => 3 )
-                );
+            $related = Helpers\Jetpack::relatedPosts();
     		
             if ( $related ) {
             	echo '<ul class="post-list">';
