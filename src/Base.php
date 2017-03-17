@@ -35,10 +35,21 @@ abstract class Base extends \WP_Widget {
             }
         }  	        
         
+        $instance->hooks();
+        
         register_widget($instance);
         
         return $instance;
     }	
+
+    public function hooks(){
+        add_action('admin_enqueue_scripts', array($this, 'scripts'));
+    }
+
+    public function scripts(){
+        wp_enqueue_script( 'media-upload' );
+        wp_enqueue_media();
+    }
 
     public static function load_texdomain(){
         load_textdomain( 'svbk-widgets', dirname(__DIR__).'/languages/svbk-widgets' . '-' . get_locale() . '.mo'   ); 
@@ -118,6 +129,43 @@ abstract class Base extends \WP_Widget {
         </p>
     <?php
     }      
+    
+    protected function fileField($name, $value, $title, $attr=array(), $fileAttr=array()){ 
+        
+        $fileAttr = wp_parse_args($fileAttr, array(
+            'title' => __('Select or upload file', 'svbk-widgets'),
+            //'library' => array(
+            //  'type' => 'image'
+            //),            
+            'button' => array(
+                'text' => __('Select', 'svbk-widgets')
+            ),
+            'multiple' => false  // Set to true to allow multiple files to be selected            
+        ));
+        
+        $button_id  =  $this->get_field_id( $name ).'_attachment_button';
+        
+    ?>
+        <p>
+            <label for="<?php echo $this->get_field_id( $name ); ?>"><?php echo $title ?></label>
+            <input id="<?php echo $this->get_field_id( $name ); ?>" name="<?php echo $this->get_field_name( $name ); ?>" type="text" value="<?php echo esc_attr( $value ); ?>" <?php $this->printAttrs($attr); ?>/>
+            <button id="<?php echo esc_attr($button_id); ?>" class="widget_attachment_field_button button"><?php _e('Select', 'svbk-widget'); ?></button>
+            <script type="text/javascript">
+                document.getElementById('<?php echo esc_attr($button_id); ?>').addEventListener("click", function (e) {
+                    e.preventDefault();
+                    var file_frame = wp.media.frames.file_frame = wp.media(<?php echo json_encode($fileAttr); ?>);
+                    
+                    file_frame.on('select', function () {
+                        var attachment = file_frame.state().get('selection').first().toJSON();
+                        document.getElementById('<?php echo $this->get_field_id( $name ); ?>').value = attachment.id;
+                    });
+                    
+                    file_frame.open();
+                });
+            </script>
+        </p>
+    <?php 
+    }    
 
     protected function printAttrs($attr, $defaults=array()){
 
