@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-16 14:34+0000\n"
+"POT-Creation-Date: 2017-03-21 11:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -14,57 +14,61 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco - https://localise.biz/"
 
-#: src/Jetpack_RelatedPosts.php:14
+#: src/Jetpack_RelatedPosts.php:15
 msgid "Jetpack Related Posts"
 msgstr ""
 
-#: src/Jetpack_RelatedPosts.php:60 src/SelectLinker.php:47
+#: src/Jetpack_RelatedPosts.php:55 src/SelectLinker.php:47
 #: src/FeaturedPost.php:67
 msgid "New title"
 msgstr ""
 
-#: src/Jetpack_RelatedPosts.php:60 src/SelectLinker.php:47
+#: src/Jetpack_RelatedPosts.php:55 src/SelectLinker.php:47
 #: src/FeaturedPost.php:67
 msgid "Title:"
 msgstr ""
 
-#: src/WhitepaperDl.php:46
+#: src/WhitepaperDl.php:48
 msgid "Whitepapers Download"
 msgstr ""
 
-#: src/WhitepaperDl.php:50
+#: src/WhitepaperDl.php:52
 msgid "Subscribe & download whitepaper widget"
 msgstr ""
 
-#: src/WhitepaperDl.php:122
+#: src/WhitepaperDl.php:124
 msgid "Widget title"
 msgstr ""
 
-#: src/WhitepaperDl.php:122
+#: src/WhitepaperDl.php:124
 msgid "Title"
 msgstr ""
 
-#: src/WhitepaperDl.php:123
+#: src/WhitepaperDl.php:125
 msgid "Description text"
 msgstr ""
 
-#: src/WhitepaperDl.php:123
+#: src/WhitepaperDl.php:125
 msgid "Description"
 msgstr ""
 
-#: src/WhitepaperDl.php:124
+#: src/WhitepaperDl.php:126
 msgid "Form Title"
 msgstr ""
 
-#: src/WhitepaperDl.php:125
-msgid "File ID"
+#: src/WhitepaperDl.php:127
+msgid "Download File ID"
 msgstr ""
 
-#: src/WhitepaperDl.php:126
+#: src/WhitepaperDl.php:128
+msgid "View mode"
+msgstr ""
+
+#: src/WhitepaperDl.php:129
 msgid "Submit button"
 msgstr ""
 
-#: src/WhitepaperDl.php:127
+#: src/WhitepaperDl.php:130
 msgid "Privacy Link"
 msgstr ""
 
@@ -84,12 +88,20 @@ msgstr ""
 msgid "Featured Post"
 msgstr ""
 
-#: src/Base.php:48
+#: src/Base.php:59
 msgid "Silverback Generic Widget"
 msgstr ""
 
-#: src/Base.php:52
+#: src/Base.php:63
 msgid "Insert Description"
+msgstr ""
+
+#: src/Base.php:136
+msgid "Select or upload file"
+msgstr ""
+
+#: src/Base.php:141
+msgid "Select"
 msgstr ""
 
 #. Name of the plugin
