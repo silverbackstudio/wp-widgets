@@ -17,6 +17,12 @@ class WhitepaperDl extends Base {
     public $action = 'sendwhitepaper'; 
     public $formClass = '\Svbk\WP\Helpers\Form\Download';    
     
+    public static $visibleOptions = array(
+        'visible' => 'Visible', 
+        'collapse'=>'Collapse', 
+        'lightbox'=>'Lightbox'
+    );
+    
     public $renderOrder = array(
     	'formBegin',
     	'title',
@@ -118,7 +124,8 @@ class WhitepaperDl extends Base {
             $this->textField('title', $this->fieldValue( $instance, 'title', __( 'Widget title', 'svbk-widgets' ) ), __( 'Title', 'svbk-widgets').':' );
             $this->textAreaField('description', $this->fieldValue( $instance, 'description', __( 'Description text', 'svbk-widgets' ) ), __( 'Description', 'svbk-widgets').':' );
             $this->textField('form_title', $this->fieldValue( $instance, 'form_title' ), __( 'Form Title', 'svbk-widgets').':' );
-            $this->fileField('file', $this->fieldValue( $instance, 'file' ), __( 'Downoload File ID', 'svbk-widgets').':' );
+            $this->fileField('file', $this->fieldValue( $instance, 'file' ), __( 'Download File ID', 'svbk-widgets').':' );
+            $this->selectField('hidden', $this->fieldValue( $instance, 'hidden' ), __( 'View mode', 'svbk-widgets').':', self::$visibleOptions );            
             $this->textField('submit_button_label', $this->fieldValue( $instance, 'submit_button_label' ), __( 'Submit button', 'svbk-widgets').':' );
             $this->textField('privacy_link', $this->fieldValue( $instance, 'privacy_link' ), __( 'Privacy Link', 'svbk-widgets').':' );
 	}
@@ -141,6 +148,7 @@ class WhitepaperDl extends Base {
         $instance['privacy_link'] = $this->sanitizeField($new_instance, 'privacy_link');
         $instance['description'] = $this->sanitizeField($new_instance, 'description', 'wp_kses_post');
         $instance['form_title'] = $this->sanitizeField($new_instance, 'form_title');
+        $instance['hidden'] = $this->sanitizeField($new_instance, 'hidden');
         $instance['submit_button_label'] = $this->sanitizeField($new_instance, 'submit_button_label');
         $instance['file'] = $this->sanitizeField($new_instance, 'file', 'intval');
 
@@ -174,18 +182,25 @@ class WhitepaperDl extends Base {
         
         echo '<div class="whitepaper-dl svbk-form-container" id="' . $this->id_base . '-container-' . $this->number .'" >';
         
-        echo '<a class="button svbk-show-content" href="#' . $this->id_base . '-container-' . $this->number .'" >' . urldecode( $instance['submit_button_label'] ) . '</a>';
-        echo '<div class="svbk-form-content">';
-        echo '<a class="button svbk-hide-content" href="#' . $this->id_base . '-container-' . $this->number .'" ><span>' . __('Close', 'svbk-shortcakes') . '</span></a>';
+        $hidden = $instance['hidden']  && ( $instance['hidden'] !== 'visible');
         
+        if($hidden){
+            echo '<a class="button svbk-show-content svbk-'.$instance['hidden'].'-open" href="#' . $this->id_base . '-container-' . $this->number .'" >' . urldecode( $instance['submit_button_label'] ) . '</a>';
+            echo '<div class="svbk-'.$instance['hidden'].'-container">';
+            echo '<a class="button svbk-hide-content svbk-'.$instance['hidden'].'-close" href="#' . $this->id_base . '-container-' . $this->number .'" ><span>' . __('Close', 'svbk-shortcakes') . '</span></a>';                
+            echo '<div class="svbk-form-content svbk-'.$instance['hidden'].'-content">';
+        }
+
         if($instance['form_title']){
             echo '<h3 class="form-title">'.$instance['form_title'].'</h3>';
         }
 
         echo Helpers\Renderer::mergeParts($this->renderOutput($instance), $this->renderOrder);
         
-        echo '</div>';
-        echo '</div>';
+        if($hidden){        
+            echo '</div>';
+            echo '</div>';
+        }
         
 		echo $args['after_widget'];
 	}	
