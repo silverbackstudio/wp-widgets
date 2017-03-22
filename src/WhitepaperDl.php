@@ -40,8 +40,7 @@ class WhitepaperDl extends Base {
         
         parent::hooks();
         
-        add_action( "admin_post_nopriv_{$this->action}", array($this, 'processSubmission') );
-        add_action( "admin_post_{$this->action}", array($this, 'processSubmission') );
+        add_action( 'init', array($this, 'processSubmission') );
     }
 
     protected function title(){
@@ -52,6 +51,11 @@ class WhitepaperDl extends Base {
         return array( 'description' => __( 'Subscribe & download whitepaper widget', 'svbk-widgets' ) );
     }    
     
+	protected function submitUrl() {
+		$base_url = set_url_scheme( home_url( '/' ) );
+		return add_query_arg( array( 'svbkSubmit' => $this->action ), $base_url );
+	}    
+    
     protected function getForm($setSendParams=false){
         
         $formClass = $this->formClass;
@@ -60,6 +64,7 @@ class WhitepaperDl extends Base {
         
         $form->field_prefix = 'form_'.$this->id_base;
         $form->action = $this->action;
+        $form->submitUrl = $this->submitUrl();
         
         if($setSendParams) {
             $form->mc_apikey = $this->mc_apikey;
@@ -73,6 +78,18 @@ class WhitepaperDl extends Base {
     }
     
     public function processSubmission(){
+
+        if(filter_input(INPUT_GET, 'svbkSubmit', FILTER_SANITIZE_SPECIAL_CHARS) !== $this->action){
+            return;
+        }
+
+		if ( ! defined( 'DOING_AJAX' ) ) {
+			define( 'DOING_AJAX', true );
+		}
+
+		@header( 'Content-Type: text/html; charset=' . get_option( 'blog_charset' ) );
+		@header('Content-Type: application/json');
+		send_nosniff_header();        
         
         $form = $this->getForm(true);
         
