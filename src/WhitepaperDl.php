@@ -27,11 +27,12 @@ class WhitepaperDl extends Base {
     	'formBegin',
     	'title',
     	'input',
+    	'requiredNotice',
     	'beginPolicySubmit',
         'policy',
         'submitButton',
-        'messages',
         'endPolicySubmit',
+        'messages',
         'formEnd'
     ); 
     
