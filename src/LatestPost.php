@@ -8,12 +8,12 @@ namespace Svbk\WP\Widgets;
  */
 class FeaturedPost extends Base {
 
-    public $id_base = 'svbk_featured_post';
+    public $id_base = 'svbk_latest_post';
     public $template = 'template-parts/thumb';
     public $excerpt_lenght = 15;
 
     protected function title(){
-        return __( 'Featured Post', 'svbk-widgets' );
+        return __( 'Latest Post', 'svbk-widgets' );
     }
     
     protected function args(){
@@ -21,37 +21,31 @@ class FeaturedPost extends Base {
     }
     
 	public function widget( $args, $instance ) {
-
-        $query_args = array(
-            'posts_per_page' => 1, 
-            'post__in'  => get_option( 'sticky_posts' ),
-	        'ignore_sticky_posts' => 1,
-            'orderby'=>'date'
-        );
-        
-		// if(is_single()){
-        //     $query_args['post__not_in'] = array( get_the_ID() );
-        // }
-
-        $the_query = new \WP_Query( $query_args );
-        
-        if( ! $the_query->have_posts() ){
-            return;
-        }
-        
-        add_filter( 'excerpt_length', array($this, 'excerpt_length'), 99 );
-		
 		echo $args['before_widget'];
 		if ( ! empty( $instance['title'] ) ) {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
 		}
 
+        $query_args = array(
+            'posts_per_page' => 1, 
+            'orderby'=>'date'
+        );
+        
+        if(is_single()){
+            $query_args['post__not_in'] = array( get_the_ID() );
+        }
+
+        $the_query = new \WP_Query( $query_args );
+        
+        add_filter( 'excerpt_length', array($this, 'excerpt_length'), 99 );
+        // Il Loop
         while ( $the_query->have_posts() ) : $the_query->the_post();
         	get_template_part( $this->template, get_post_type() );
         endwhile;
-        
         remove_filter( 'excerpt_length', array($this, 'excerpt_length'), 99 );
         
+        
+        // Ripristina Query & Post Data originali
         wp_reset_query();
         wp_reset_postdata();        
 
