@@ -3,7 +3,7 @@
 namespace Svbk\WP\Widgets\Jetpack;
 
 use Svbk\WP\Helpers;
-use Svbk\WP\Base;
+use Svbk\WP\Widgets\Base;
 
 /**
  * Adds Foo_Widget widget.
