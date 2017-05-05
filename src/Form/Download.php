@@ -214,7 +214,7 @@ class Download extends Base {
             echo '<h3 class="form-title">'.$instance['form_title'].'</h3>';
         }
 
-        echo Helpers\Renderer::mergeParts($this->renderOutput($instance), $this->renderOrder);
+        echo Helpers\Form\Renderer::mergeParts($this->renderOutput($instance), $this->renderOrder);
         
         if($hidden){        
             echo '</div>';

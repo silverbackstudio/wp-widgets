@@ -30,7 +30,7 @@ class Related extends Base {
     			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
     		}
     
-            $related = Helpers\Jetpack::relatedPosts();
+            $related = Helpers\Plugin\Jetpack::relatedPosts();
     		
             if ( $related ) {
             	echo '<ul class="post-list">';
