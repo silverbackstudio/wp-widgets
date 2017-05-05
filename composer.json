@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "silverbackstudio/wp-themehelper": "^1.1.1",
+        "silverbackstudio/wp-themehelper": "^1.1.1"
     },
     "autoload": {
         "psr-4": {"Svbk\\WP\\Widgets\\": "src/"}
