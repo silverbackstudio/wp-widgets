@@ -76,8 +76,6 @@ class Download extends Base {
             $form->mc_list_id = $this->mc_list_id;
             $form->md_apikey = $this->md_apikey;
             
-            var_dump( $this->md_template );
-            
             $form->templateName = $this->md_template;
             
             if(!empty( $this->messageDefaults ) ){
@@ -86,7 +84,7 @@ class Download extends Base {
                     $this->messageDefaults
                 );
             }
-                        
+            
         }
         
         return $form;
