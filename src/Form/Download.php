@@ -14,6 +14,8 @@ class Download extends Base {
     
     public $md_apikey = '';
     public $md_template = '';
+    
+    public $messageDefaults = array();
 
     public $action = 'sendwhitepaper'; 
     public $formClass = '\Svbk\WP\Helpers\Form\Download';    
@@ -64,16 +66,27 @@ class Download extends Base {
         
         $form = new $formClass;
         
-        $form->field_prefix = 'form_'.$this->id_base;
+        $form->field_prefix = $this->id_base;
         $form->action = $this->action;
         $form->submitUrl = $this->submitUrl();
         
         if($setSendParams) {
+            
             $form->mc_apikey = $this->mc_apikey;
             $form->mc_list_id = $this->mc_list_id;
             $form->md_apikey = $this->md_apikey;
             
-            $form->templateName = $this->md_template;        
+            var_dump( $this->md_template );
+            
+            $form->templateName = $this->md_template;
+            
+            if(!empty( $this->messageDefaults ) ){
+                $form->messageDefaults = array_merge(
+                    $form->messageDefaults,
+                    $this->messageDefaults
+                );
+            }
+                        
         }
         
         return $form;
@@ -99,9 +112,9 @@ class Download extends Base {
         
         $errors = $form->getErrors();
         
-        header('Content-Type: application/json');
-
         echo $this->jsonResponse($errors, $form);
+        
+        die();
     }
     
     public function jsonResponse($errors, $form) {
