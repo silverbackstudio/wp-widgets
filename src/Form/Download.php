@@ -3,7 +3,7 @@
 namespace Svbk\WP\Widgets\Form;
 
 use Svbk\WP\Helpers;
-use Svbk\WP\Wigets\Base;
+use Svbk\WP\Widgets\Base;
 
 class Download extends Base {
 
