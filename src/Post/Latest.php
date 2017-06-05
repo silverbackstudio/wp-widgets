@@ -21,16 +21,20 @@ class Latest extends Base {
     }
     
     protected function args(){
-        return array(  'description' => __( '', 'svbk-widgets' ), );
+        return array(  'description' => __( 'Shows latest ', 'svbk-widgets' ), );
     }
     
     protected function queryArgs( $instance ){
         
         $query_args = $this->query_args;
         
-        if(is_single()){
+        if( is_singular() ){
             $query_args['post__not_in'] = array( get_the_ID() );
         }        
+        
+        if( !empty($instance['count']) ) {
+            $query_args['posts_per_page'] = intval($instance['count']);
+        }
         
         return $query_args;
     }
@@ -49,14 +53,17 @@ class Latest extends Base {
 		}                
         
         add_filter( 'excerpt_length', array($this, 'excerpt_length'), 99 );
-        // Il Loop
+
         while ( $the_query->have_posts() ) : $the_query->the_post();
-        	get_template_part( $this->template, get_post_type() );
+            if( $this->template ) {
+        	    get_template_part( $this->template, get_post_type() );
+            } else {
+                echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>';
+            } 
         endwhile;
+        
         remove_filter( 'excerpt_length', array($this, 'excerpt_length'), 99 );
         
-        
-        // Ripristina Query & Post Data originali
         wp_reset_query();
         wp_reset_postdata();        
 
@@ -76,6 +83,7 @@ class Latest extends Base {
 	 */
 	public function form( $instance ) {
             $this->textField('title', $this->fieldValue( $instance, 'title', __( 'New title', 'svbk-widgets' ) ), __( 'Title:', 'svbk-widgets') );
+            $this->textField('count', $this->fieldValue( $instance, 'count', 1 ), __( 'Count:', 'svbk-widgets') );
 	}
 
 	/**
@@ -93,6 +101,7 @@ class Latest extends Base {
         $instance = array();
         
         $instance['title'] = $this->sanitizeField($new_instance, 'title');
+        $instance['count'] = $this->sanitizeField($new_instance, 'count', 'intval');
         
         return $instance;	    
 	    
