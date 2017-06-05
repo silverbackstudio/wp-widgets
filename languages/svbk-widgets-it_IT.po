@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Silverback widgets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-21 11:05+0000\n"
-"PO-Revision-Date: 2017-03-21 11:06+0000\n"
+"POT-Creation-Date: 2017-06-05 14:06+0000\n"
+"PO-Revision-Date: 2017-06-05 14:10+0000\n"
 "Last-Translator: SilverbackStudio <webmaster@silverbackstudio.it>\n"
 "Language-Team: Italian\n"
 "Language: it-IT\n"
@@ -13,95 +13,145 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco - https://localise.biz/"
 
-#: src/WhitepaperDl.php:127
-msgid "Download File ID"
-msgstr "File da scaricare (ID)"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Ads/AdSense.php:14
+msgid "AdSense AdUnit"
+msgstr "Unitá pubblicitaria AdSense "
 
-#: src/WhitepaperDl.php:128
-msgid "View mode"
-msgstr "Modalità visualizzazione"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Ads/AdSense.php:18
+msgid "Shows an AdSense banner"
+msgstr "Mostra un banner di AdSense"
 
-#: src/Base.php:136
-msgid "Select or upload file"
-msgstr "Seleziona o carica un file"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Ads/AdSense.php:39
+msgid "Ad Unit ID"
+msgstr "ID unità pubblicitaria"
 
-#: src/Base.php:141
-msgid "Select"
-msgstr "Seleziona"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Ads/AdSense.php:40
+msgid "Ad Size"
+msgstr "Dimensione unità pubblicitaria"
 
-#: src/Jetpack_RelatedPosts.php:15
-msgid "Jetpack Related Posts"
-msgstr "Articoli correlati di Jetpack"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Single.php:10
+msgid "Single Post"
+msgstr "Articolo Singolo"
 
-#: src/Jetpack_RelatedPosts.php:55 src/SelectLinker.php:47
-#: src/FeaturedPost.php:67
-msgid "New title"
-msgstr "Nuovo titolo"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Link.php:10
+msgid "Post Link"
+msgstr "Collegamento all'articolo"
 
-#: src/Jetpack_RelatedPosts.php:55 src/SelectLinker.php:47
-#: src/FeaturedPost.php:67
-msgid "Title:"
-msgstr "Titolo:"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Link.php:28
+msgid "New subtitle"
+msgstr "Nuovo sottotitolo"
 
-#: src/WhitepaperDl.php:48
-msgid "Whitepapers Download"
-msgstr "Scarica Documenti"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Link.php:28
+msgid "Subtitle:"
+msgstr "Sottotitolo;"
 
-#: src/WhitepaperDl.php:52
-msgid "Subscribe & download whitepaper widget"
-msgstr "Widget Scarica e Iscriviti"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Link.php:29
+msgid "New description"
+msgstr "Nuova descrizione"
 
-#: src/WhitepaperDl.php:124
-msgid "Widget title"
-msgstr "Titolo Widget"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Link.php:29
+msgid "Description:"
+msgstr "Descrizione:"
 
-#: src/WhitepaperDl.php:124
-msgid "Title"
-msgstr "Titolo"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Link.php:30
+msgid "Click here"
+msgstr "Clicca qui"
 
-#: src/WhitepaperDl.php:125
-msgid "Description text"
-msgstr "Testo Descrizione"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Link.php:30
+msgid "Button Label:"
+msgstr "Etichetta pulsante:"
 
-#: src/WhitepaperDl.php:125
-msgid "Description"
-msgstr "Descrizione"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Archives.php:14
+msgid "Posts Archive"
+msgstr "Archivio articoli"
 
-#: src/WhitepaperDl.php:126
-msgid "Form Title"
-msgstr "Titolo del Form"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Archives.php:18
+msgid "Shows archive in a collapse"
+msgstr "Mostra archivio a fisarmonica"
 
-#: src/WhitepaperDl.php:129
-msgid "Submit button"
-msgstr "Pulstante Invio"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Sticky.php:11
+msgid "Sticky Post"
+msgstr "Articolo in evidenza"
 
-#: src/WhitepaperDl.php:130
-msgid "Privacy Link"
-msgstr "Link Privacy Policy"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Latest.php:20
+msgid "Latest Post"
+msgstr "Ultimo articolo"
 
-#: src/SelectLinker.php:14
-msgid "Select Linker"
-msgstr "Menu a Select"
-
-#: src/SelectLinker.php:18
-msgid "Displays a menu in a select"
-msgstr "Mostra il menu in una select"
-
-#: src/SelectLinker.php:49
-msgid "Select Menu:"
-msgstr "Seleziona il menu:"
-
-#: src/FeaturedPost.php:16
-msgid "Featured Post"
-msgstr "Post in evidenza"
-
-#: src/Base.php:59
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Base.php:59
 msgid "Silverback Generic Widget"
 msgstr "Widget generico di Silverback"
 
-#: src/Base.php:63
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Base.php:63
 msgid "Insert Description"
 msgstr "Inserisci descrizione"
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Base.php:136
+msgid "Select or upload file"
+msgstr "Seleziona o carica un file"
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Base.php:141
+msgid "Select"
+msgstr "Seleziona"
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Jetpack/Related.php:16
+msgid "Jetpack Related Posts"
+msgstr "Articoli correlati di Jetpack"
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Jetpack/Related.php:56
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Archives.php:117
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Latest.php:78
+msgid "New title"
+msgstr "Nuovo titolo"
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Jetpack/Related.php:56
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Archives.php:117
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Latest.php:78
+msgid "Title:"
+msgstr "Titolo:"
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:51
+msgid "Whitepapers Download"
+msgstr "Scarica Documenti"
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:55
+msgid "Subscribe & download whitepaper widget"
+msgstr "Widget Scarica e Iscriviti"
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:154
+msgid "Widget title"
+msgstr "Titolo Widget"
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:154
+msgid "Title"
+msgstr "Titolo"
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:155
+msgid "Description text"
+msgstr "Testo Descrizione"
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:155
+msgid "Description"
+msgstr "Descrizione"
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:156
+msgid "Form Title"
+msgstr "Titolo del Form"
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:157
+msgid "Download File ID"
+msgstr "File da scaricare (ID)"
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:158
+msgid "View mode"
+msgstr "Modalità visualizzazione"
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:159
+msgid "Submit button"
+msgstr "Pulstante Invio"
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:160
+msgid "Privacy Link"
+msgstr "Link Privacy Policy"
 
 #. Name of the plugin
 msgid "Silverback widgets"
