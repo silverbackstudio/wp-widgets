@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Svbk\WP\Widgets\Jetpack;
 
@@ -10,38 +10,40 @@ use Svbk\WP\Widgets\Base;
  */
 class Related extends Base {
 
-    public $id_base = 'svbk_jp_related_posts';
+	public $id_base = 'svbk_jp_related_posts';
 
-    protected function title(){
-        return __( 'Jetpack Related Posts', 'svbk-widgets' );
-    }
-    
-    protected function args(){
-        return array(  'description' => __( '', 'svbk-widgets' ), );
-    }
-    
+	protected function title() {
+		return __( 'Jetpack Related Posts', 'svbk-widgets' );
+	}
+
+	protected function args() {
+		return array(
+			'description' => __( '', 'svbk-widgets' ),
+		);
+	}
+
 	public function widget( $args, $instance ) {
-		
-		if (is_single() && class_exists( 'Jetpack_RelatedPosts' ) && method_exists( 'Jetpack_RelatedPosts', 'init_raw' ) ) {
-    		
-    		echo $args['before_widget'];
-    		
-    		if ( ! empty( $instance['title'] ) ) {
-    			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
-    		}
-    
-            $related = Helpers\Plugin\Jetpack::relatedPosts();
-    		
-            if ( $related ) {
-            	echo '<ul class="post-list">';
-                foreach ( $related as $result ) {
-                    echo '<li><a href="' . get_permalink( $result['id'] ) . '">' . get_the_title( $result['id'] ) . '</a></li>';
-                }
-                echo '</ul>';
-            }
-        
-    		echo $args['after_widget'];
-    		
+
+		if ( is_single() && class_exists( 'Jetpack_RelatedPosts' ) && method_exists( 'Jetpack_RelatedPosts', 'init_raw' ) ) {
+
+			echo $args['before_widget'];
+
+			if ( ! empty( $instance['title'] ) ) {
+				echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+			}
+
+			$related = Helpers\Plugin\Jetpack::relatedPosts();
+
+			if ( $related ) {
+				echo '<ul class="post-list">';
+				foreach ( $related as $result ) {
+					echo '<li><a href="' . get_permalink( $result['id'] ) . '">' . get_the_title( $result['id'] ) . '</a></li>';
+				}
+				echo '</ul>';
+			}
+
+			echo $args['after_widget'];
+
 		}
 	}
 
@@ -53,7 +55,7 @@ class Related extends Base {
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
-            $this->textField('title', $this->fieldValue( $instance, 'title', __( 'New title', 'svbk-widgets' ) ), __( 'Title:', 'svbk-widgets') );
+			$this->textField( 'title', $this->fieldValue( $instance, 'title', __( 'New title', 'svbk-widgets' ) ), __( 'Title:', 'svbk-widgets' ) );
 	}
 
 	/**
@@ -67,13 +69,11 @@ class Related extends Base {
 	 * @return array Updated safe values to be saved.
 	 */
 	public function update( $new_instance, $old_instance ) {
-	    
-        $instance = array();
-        
-        $instance['title'] = $this->sanitizeField($new_instance, 'title');
-        
-        return $instance;	    
-	    
+
+		$instance = array();
+		$instance['title'] = $this->sanitizeField( $new_instance, 'title' );
+
+		return $instance;
 	}
 
-} // class Foo_Widget
+}
