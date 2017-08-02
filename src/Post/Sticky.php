@@ -17,7 +17,7 @@ class Sticky extends Latest {
 		);
 	}
 
-	public function queryArgs() {
+	public function queryArgs( $instance ) {
 
 		$query_args = parent::queryArgs();
 
