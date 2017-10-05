@@ -110,7 +110,7 @@ abstract class Base extends \WP_Widget {
 	<?php
 	}
 
-	protected function postSelect( $name, $value, $title ) {
+	protected function postSelect( $name, $value, $title, $attr = array() ) {
 	?>
 		<p>
 		   <input id="<?php echo $this->get_field_id( $name ); ?>" name="<?php echo $this->get_field_name( $name ); ?>" type="text" value="<?php echo esc_attr( $value ); ?>" <?php $this->printAttrs( $attr ); ?>/>
