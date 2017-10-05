@@ -65,7 +65,7 @@ class Link extends Single {
 		<div class="subtitle"><?php echo $instance['subtitle']; ?></div>
 		<?php endif; ?>
 
-				<?php if ( ! empty( $instance['description'] ) ) : ?>
+		<?php if ( ! empty( $instance['description'] ) ) : ?>
 		<div class="widget-description"><?php echo $instance['description'] ?></div>
 		<?php endif; ?>
 

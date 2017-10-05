@@ -18,7 +18,7 @@ class Single extends Latest {
 
 	protected function queryArgs( $instance ) {
 
-		$query_args = parent::queryArgs( $instance );
+		$query_args = $this->query_args;
 
 		$query_args['ignore_sticky_posts'] = 1;
 		$query_args['post__in'] = array( $instance['post_id'] );
@@ -35,7 +35,7 @@ class Single extends Latest {
 	 */
 	public function form( $instance ) {
 
-		parent::form( $instance );
+		$this->textField( 'title', $this->fieldValue( $instance, 'title', __( 'New title', 'svbk-widgets' ) ), __( 'Title:', 'svbk-widgets' ) );
 
 		$query_args = $this->query_args;
 		$query_args['posts_per_page'] = 100;
