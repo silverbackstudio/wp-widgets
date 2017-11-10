@@ -110,6 +110,7 @@ class Form extends Base {
 
 	public function jsonResponse( $errors, $form ) {
 
+
 		if ( ! empty( $errors ) ) {
 
 			return json_encode( array(
@@ -122,18 +123,19 @@ class Form extends Base {
 			return false;
 		}
 
-		return json_encode(
-			array(
-				'prefix' => $this->id_base,
-				'status' => 'success',
-				'message' => $this->confirmMessage(),
-			)
+		$redirect_to = filter_input( INPUT_POST, $form->fieldName('redirect_to'), FILTER_VALIDATE_INT );
+
+		$response = array(
+			'prefix' => $this->id_base,
+			'status' => 'success',
+			'message' => $this->confirmMessage(),
 		);
 
-
-		if ( ! $this->hardRedirect && $this->redirectTo ) {
-			$response['redirect'] = $this->redirectTo;
+		if ( $redirect_to ) {
+			$response['redirect'] = get_permalink( $redirect_to );
 		}
+
+		return json_encode( $response );
 
 	}
 
@@ -184,6 +186,17 @@ class Form extends Base {
 		if (! $hidden ){
 			$output['intro'] = $instance['description'];	
 		}		
+		
+		if( $instance['redirect_to'] ) {
+			$output['input']['redirect_to'] =  $form->renderField( 'redirect_to', 
+				array(
+					'label' => __( 'Redirect To', 'svbk-helpers' ),
+					'type' => 'hidden',
+					'default' => $instance['redirect_to'],
+					'filter' => FILTER_VALIDATE_INT,
+				) 
+			);
+		}
 		
 		$output['beginPolicySubmit'] = '<div class="form-policy-submit-wrapper">';
 		$output['endPolicySubmit'] = '</div>';
