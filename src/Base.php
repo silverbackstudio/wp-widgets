@@ -129,6 +129,7 @@ abstract class Base extends \WP_Widget {
 					'name' => $this->get_field_name( $name ),
 					'id' => $this->get_field_id( $name ),
 					'selected' => $value,
+					'show_option_none' => '- ' . __('Disabled', 'svbk-widgets') .' -',
 					'class' => 'widefat',
 				)
 			);
