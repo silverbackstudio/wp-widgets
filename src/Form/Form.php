@@ -14,6 +14,7 @@ class Form extends Base {
 	public $formParams = array();
 
 	public $confirmMessage = '';
+	public $classes = array('svbk-form-container');
 
 	public static $visibleOptions = array(
 		'visible' => 'Visible',
@@ -204,6 +205,35 @@ class Form extends Base {
 		return $output;
 	}
 
+	protected function getClasses( $instance ) {
+
+		$instance_classes = array();
+
+		if ( ! empty( $instance['class'] ) ) {
+			$instance_classes = array_merge( $instance_classes, preg_split( '/[\s,]+/', $instance['class'], -1, PREG_SPLIT_NO_EMPTY ) );
+		}
+
+		if ( ! empty( $instance['classes'] ) ) {
+			$instance_classes = array_merge( preg_split( '/[\s,]+/', $instance['classes'], -1, PREG_SPLIT_NO_EMPTY ) );
+		}
+
+		$classes = array_merge( (array) $this->classes, $instance_classes );
+
+		if ( ! empty( $classes ) ) {
+			return array_map( 'trim', $classes );
+		}
+
+	}
+
+	protected static function renderClasses( $classes ) {
+
+		if ( empty( $classes ) ) {
+			return '';
+		}
+
+		return  'class="' . esc_attr( join( ' ', $classes ) ) . '"';
+	}
+
 	/**
 	 * @inheritdoc
 	 */
@@ -220,7 +250,7 @@ class Form extends Base {
 		</header>
 		<?php
 
-		echo '<div class="svbk-form-container" id="' . $this->id_base . '-container-' . $this->number . '" >';
+		echo '<div ' . $this->renderClasses( $this->getClasses( $instance ) ) . ' id="' . $this->id_base . '-container-' . $this->number . '" >';
 
 		if ( $hidden ) {
 			echo '<a class="button svbk-show-content svbk-' . $instance['hidden'] . '-open" href="#' . $this->id_base . '-container-' . $this->number . '" >' . urldecode( $instance['submit_button_label'] ) . '</a>';
