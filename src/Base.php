@@ -14,9 +14,9 @@ abstract class Base extends \WP_Widget {
 	/**
 	 * Register widget with WordPress.
 	 */
-	public function __construct() {
+	public function __construct( $id_base = null ) {
 		parent::__construct(
-			$this->id_base, // Base ID
+			$id_base ?: $this->id_base, // Base ID
 			$this->name ?: $this->title(), // Name
 			$this->args()
 		);
@@ -26,8 +26,8 @@ abstract class Base extends \WP_Widget {
 	static function register( $properties = array() ) {
 
 		$class = get_called_class();
-
-		$instance = new $class;
+		
+		$instance = new $class( isset($properties['id_base']) ? $properties['id_base'] : null );
 
 		foreach ( $properties as $property => $value ) {
 			if ( property_exists( $instance, $property ) ) {
