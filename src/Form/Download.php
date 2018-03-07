@@ -10,7 +10,7 @@ class Download extends Form {
 	public $id_base = 'svbk_download_form';
 
 	public $action = 'wDownload';
-	public $formClass = '\Svbk\WP\Helpers\Form\Download';
+	public $formClass = '\Svbk\WP\Forms\Download';
 
 	/**
 	 * @inheritdoc

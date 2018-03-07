@@ -10,7 +10,7 @@ class Subscribe extends Form {
 	public $id_base = 'svbk_form_subscribe';
 
 	public $action = 'wsubscribe';
-	public $formClass = '\Svbk\WP\Helpers\Form\Subscribe';
+	public $formClass = '\Svbk\WP\Forms\Subscribe';
 
 	/**
 	 * @inheritdoc

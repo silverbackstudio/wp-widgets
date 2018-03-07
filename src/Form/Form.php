@@ -10,7 +10,7 @@ class Form extends Base {
 	public $id_base = 'svbk_form_base';
 
 	public $action = 'svbk_form_base';
-	public $formClass = '\Svbk\WP\Helpers\Form\Submission';
+	public $formClass = '\Svbk\WP\Forms\Submission';
 	
 	public $formParams = array();
 

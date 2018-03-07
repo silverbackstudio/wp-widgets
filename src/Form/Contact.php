@@ -9,8 +9,7 @@ class Contact extends Form {
 
 	public $id_base = 'svbk_contact';
 	public $action = 'wContact';
-	public $formClass = '\Svbk\WP\Helpers\Form\Contact';
-
+	public $formClass = '\Svbk\WP\Forms\Contact';
 
 	/**
 	 * @inheritdoc
