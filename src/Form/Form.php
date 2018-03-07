@@ -262,7 +262,7 @@ class Form extends Base {
 			echo '		<h3 class="form-title">' . $instance['form_title'] . '</h3>';
 		}
 
-		echo Helpers\Form\Renderer::mergeParts( $this->renderOutput( $instance ), $this->renderOrder );
+		echo Forms\Renderer::mergeParts( $this->renderOutput( $instance ), $this->renderOrder );
 
 		if ( $hidden ) {
 			echo '	</div>';
