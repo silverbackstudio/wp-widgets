@@ -3,6 +3,7 @@
 namespace Svbk\WP\Widgets\Form;
 
 use Svbk\WP\Helpers;
+use Svbk\WP\Forms;
 use Svbk\WP\Widgets\Base;
 
 class Form extends Base {
