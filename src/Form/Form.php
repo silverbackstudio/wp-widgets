@@ -11,6 +11,7 @@ class Form extends Base {
 
 	public $action = 'svbk_form_base';
 	public $formClass = '\Svbk\WP\Helpers\Form\Submission';
+	
 	public $formParams = array();
 
 	public $confirmMessage = '';
@@ -35,6 +36,14 @@ class Form extends Base {
 		'messages',
 		'formEnd',
 	);
+
+	static function register( $properties = array(), $form_properties = array() ) {
+
+		$instance = parent::register( $properties );
+
+		$instance->formParams = $form_properties;
+		
+	}
 
 	public function hooks() {
 		parent::hooks();
@@ -71,17 +80,7 @@ class Form extends Base {
 		$form->action = $this->action;
 		$form->submitUrl = $this->submitUrl();
 
-		foreach ( $this->formParams as $property => $value ) {
-			if ( ! property_exists( $form, $property ) ) {
-				continue;
-			}
-
-			if ( is_array( $value ) ) {
-				$form->$property = array_merge( $form->$property, $value );
-			} else {
-				$form->$property = $value;
-			}
-		}		
+		self::configure( $form, $this->formParams );	
 
 		return $form;
 	}

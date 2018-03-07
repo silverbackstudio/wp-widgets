@@ -41,6 +41,22 @@ abstract class Base extends \WP_Widget {
 		return $instance;
 	}
 
+	protected static function configure( &$target, $properties ) {
+		
+		foreach ( $properties as $property => $value ) {
+			if ( ! property_exists( $target, $property ) ) {
+				continue;
+			}
+
+			if ( is_array( $target->$property ) ) {
+				$target->$property = array_merge( $target->$property, (array)$value );
+			} else {
+				$target->$property = $value;
+			}
+		}
+		
+	}
+
 	public function hooks() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
 	}
