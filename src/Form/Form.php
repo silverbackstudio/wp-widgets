@@ -12,6 +12,7 @@ class Form extends Base {
 
 	public $action = 'svbk_form_base';
 	public $formClass = '\Svbk\WP\Forms\Submission';
+	public $form;	
 	
 	public $formParams = array();
 
@@ -42,8 +43,25 @@ class Form extends Base {
 
 		$instance = parent::register( $properties );
 
-		$instance->formParams = $form_properties;
+		//Retrocompatibility with 4.1
+		if ( ! empty( $form_properties ) ) {
+		    _deprecated_argument( __FUNCTION__, '4.2.0', 'Please use the setForm method' );
+    		$instance->setForm( $form_properties );
+		}
+
+		return $instance;
+	}
+
+	public function setForm( $form = array() ){
 		
+		if( is_array( $form ) ) {
+			$formClass = $this->formClass;
+			$this->form = new $formClass( $form );
+		} else {
+			$this->form = $form;
+		}
+		
+		return $this->form;
 	}
 
 	public function hooks() {
@@ -74,17 +92,16 @@ class Form extends Base {
 
 	protected function getForm() {
 
-		$formClass = $this->formClass;
-		
-		$form = new $formClass;
-		$form->field_prefix = $this->id_base;
-		$form->action = $this->action;
-		$form->submitUrl = $this->submitUrl();
+		if( !empty( self::$form_errors  ) ) {
+			$form->errors = self::$form_errors;
+		}
 
-		self::configure( $form, $this->formParams );	
+		if( empty( $this->form ) ) {
+			$this->setForm();
+		}
 
-		return $form;
-	}
+		return $this->form;
+	}	
 
 	public function processSubmission() {
 
@@ -110,7 +127,6 @@ class Form extends Base {
 	}
 
 	public function jsonResponse( $errors, $form ) {
-
 
 		if ( ! empty( $errors ) ) {
 
@@ -182,7 +198,7 @@ class Form extends Base {
 		$form = $this->getForm();
 		$form->index = $this->number;
 
-		$output = $form->renderParts( $this->action, $instance );
+		$output = $form->renderParts( $instance );
 		
 		if (! $hidden ){
 			$output['intro'] = $instance['description'];	
