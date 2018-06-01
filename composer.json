@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "silverbackstudio/wp-themehelper": "^3.1.0",
+        "silverbackstudio/wp-themehelper": "^4.0.0",
         "silverbackstudio/wp-forms": "^2.0.0"        
     },
     "autoload": {
