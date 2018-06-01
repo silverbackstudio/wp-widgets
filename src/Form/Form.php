@@ -5,6 +5,7 @@ namespace Svbk\WP\Widgets\Form;
 use Svbk\WP\Helpers;
 use Svbk\WP\Forms;
 use Svbk\WP\Widgets\Base;
+use Exception;
 
 class Form extends Base {
 
@@ -16,8 +17,11 @@ class Form extends Base {
 	
 	public $formParams = array();
 
-	public $confirmMessage = '';
 	public $classes = array('svbk-form-container');
+
+	public $redirectData = array();	
+	
+	public static $form_errors = array();
 
 	public static $visibleOptions = array(
 		'visible' => 'Visible',
@@ -57,17 +61,14 @@ class Form extends Base {
 		if( is_array( $form ) ) {
 			$formClass = $this->formClass;
 			$this->form = new $formClass( $form );
-		} else {
+		} elseif ( is_string( $form ) && Forms\Manager::has( $form ) ) {
+			$this->form = Forms\Manager::get( $form );
+		} elseif ( is_a( $form,  Form::class ) ) {
 			$this->form = $form;
+		} else {
+			throw new Exception( 'Unable to setup form' );
 		}
-		
 		return $this->form;
-	}
-
-	public function hooks() {
-		parent::hooks();
-
-		add_action( 'init', array( $this, 'processSubmission' ) );
 	}
 
 	protected function title() {
@@ -77,16 +78,6 @@ class Form extends Base {
 	protected function args() {
 		return array(
 			'description' => __( 'Silverback Base Form', 'svbk-widgets' ),
-		);
-	}
-
-	protected function submitUrl() {
-		$base_url = set_url_scheme( home_url( '/' ) );
-		return add_query_arg( 
-			array(
-				'svbkSubmit' => $this->action,
-			), 
-			$base_url
 		);
 	}
 
@@ -102,63 +93,6 @@ class Form extends Base {
 
 		return $this->form;
 	}	
-
-	public function processSubmission() {
-
-		if ( filter_input( INPUT_GET, 'svbkSubmit', FILTER_SANITIZE_SPECIAL_CHARS ) !== $this->action ) {
-			return;
-		}
-
-		if ( ! defined( 'DOING_AJAX' ) ) {
-			define( 'DOING_AJAX', true );
-		}
-
-		@header( 'Content-Type: text/html; charset=' . get_option( 'blog_charset' ) );
-		@header( 'Content-Type: application/json' );
-		send_nosniff_header();
-
-		$form = $this->getForm( true );
-		$form->processSubmission();
-			
-		$errors = $form->getErrors();
-
-		echo $this->jsonResponse( $errors, $form );
-		exit;
-	}
-
-	public function jsonResponse( $errors, $form ) {
-
-		if ( ! empty( $errors ) ) {
-
-			return json_encode( array(
-					'prefix' => $this->id_base,
-					'status' => 'error',
-					'errors' => $errors,
-				)
-			);
-
-			return false;
-		}
-
-		$redirect_to = filter_input( INPUT_POST, $form->fieldName('redirect_to'), FILTER_VALIDATE_INT );
-
-		$response = array(
-			'prefix' => $this->id_base,
-			'status' => 'success',
-			'message' => $this->confirmMessage(),
-		);
-
-		if ( $redirect_to ) {
-			$response['redirect'] = get_permalink( $redirect_to );
-		}
-
-		return json_encode( $response );
-
-	}
-
-	public function confirmMessage() {
-		return $this->confirmMessage ?: __( 'Thanks for your request, we will reply as soon as possible.', 'svbk-shortcakes' );
-	}
 
 	/**
 	 * @inheritdoc
