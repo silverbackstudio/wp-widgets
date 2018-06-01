@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-24 14:07+0000\n"
+"POT-Creation-Date: 2018-06-01 14:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -14,64 +14,100 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco - https://localise.biz/"
 
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Base.php:58
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Base.php:74
 msgid "Silverback Generic Widget"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Base.php:63
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Base.php:79
 msgid "Insert Description"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Base.php:132
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Base.php:148
 msgid "Disabled"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Base.php:148
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Base.php:164
 msgid "Select or upload file"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Base.php:150
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Base.php:166
 msgid "Select"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Latest.php:21
-msgid "Latest Post"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:75
+msgid "Silverback Form"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Latest.php:26
-msgid "Shows latest "
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:80
+msgid "Silverback Base Form"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Latest.php:88
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Archives.php:117
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Jetpack/Related.php:58
-msgid "New title"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:101
+msgid "Widget title"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Latest.php:88
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Archives.php:117
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Jetpack/Related.php:58
-msgid "Title:"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:101
+msgid "Title"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Latest.php:89
-msgid "Count:"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:102
+msgid "Description text"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Archives.php:14
-msgid "Posts Archive"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:102
+msgid "Description"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Archives.php:19
-msgid "Shows archive in a collapse"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:103
+msgid "Form Title"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Sticky.php:11
-msgid "Sticky Post"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:104
+msgid "View mode"
 msgstr ""
 
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Single.php:10
-msgid "Single Post"
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:105
+msgid "Submit button"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:106
+msgid "Privacy Link"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:107
+msgid "Redirect To"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:208
+msgid "Close"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Subscribe.php:19
+msgid "Subscribe"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Subscribe.php:27
+msgid "Subscribe to a marketing list"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Contact.php:18
+msgid "Contact"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Contact.php:26
+msgid "Send a mail to recipient"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:19
+msgid "Download"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:27
+msgid "Subscribe to receive a file vie email"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:39
+msgid "Download File ID"
 msgstr ""
 
 #: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Link.php:10
@@ -102,6 +138,46 @@ msgstr ""
 msgid "Button Label:"
 msgstr ""
 
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Single.php:10
+msgid "Single Post"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Sticky.php:11
+msgid "Sticky Post"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Archives.php:14
+msgid "Posts Archive"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Archives.php:19
+msgid "Shows archive in a collapse"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Archives.php:117
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Latest.php:88
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Jetpack/Related.php:58
+msgid "New title"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Archives.php:117
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Latest.php:88
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Jetpack/Related.php:58
+msgid "Title:"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Latest.php:21
+msgid "Latest Post"
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Latest.php:26
+msgid "Shows latest "
+msgstr ""
+
+#: ../../../../vendor/silverbackstudio/wp-widgets/src/Post/Latest.php:89
+msgid "Count:"
+msgstr ""
+
 #: ../../../../vendor/silverbackstudio/wp-widgets/src/Ads/AdSense.php:14
 msgid "AdSense AdUnit"
 msgstr ""
@@ -116,91 +192,6 @@ msgstr ""
 
 #: ../../../../vendor/silverbackstudio/wp-widgets/src/Ads/AdSense.php:42
 msgid "Ad Size"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Optin.php:19
-msgid "Opt-in"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Optin.php:27
-msgid "Subscribe to receive a file vie email"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Optin.php:39
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:160
-msgid "Download File ID"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Contact.php:19
-msgid "Contact"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Contact.php:27
-msgid "Send a mail to recipient"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:51
-msgid "Whitepapers Download"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:56
-msgid "Subscribe & download whitepaper widget"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:157
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:150
-msgid "Widget title"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:157
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:150
-msgid "Title"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:158
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:151
-msgid "Description text"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:158
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:151
-msgid "Description"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:159
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:152
-msgid "Form Title"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:161
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:153
-msgid "View mode"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:162
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:154
-msgid "Submit button"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Download.php:163
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:155
-msgid "Privacy Link"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:45
-msgid "Silverback Form"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:50
-msgid "Silverback Base Form"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:156
-msgid "Redirect To"
-msgstr ""
-
-#: ../../../../vendor/silverbackstudio/wp-widgets/src/Form/Form.php:228
-msgid "Close"
 msgstr ""
 
 #: ../../../../vendor/silverbackstudio/wp-widgets/src/Jetpack/Related.php:16
