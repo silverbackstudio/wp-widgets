@@ -19,7 +19,7 @@ class Sticky extends Latest {
 
 	public function queryArgs( $instance ) {
 
-		$query_args = parent::queryArgs( $instance );  //added parameter
+		$query_args = parent::queryArgs( $instance );
 
 		$query_args['post__in'] = get_option( 'sticky_posts' );
 		$query_args['ignore_sticky_posts'] = 1;
