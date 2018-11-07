@@ -4,6 +4,8 @@ namespace Svbk\WP\Widgets;
 
 add_action( 'after_setup_theme', __NAMESPACE__ . '\\Base::load_texdomain' );
 
+use WP_Customize_Manager;
+
 /**
  * Adds Foo_Widget widget.
  */
@@ -188,6 +190,50 @@ abstract class Base extends \WP_Widget {
 				file_frame.open();
 			});
 			</script>
+		</p>
+	<?php
+	}
+
+
+	protected function menuSelect( $name, $nav_menu, $title, $args = array() ) {
+		global $wp_customize;
+
+		// Get menus
+		$menus = wp_get_nav_menus();
+
+			// If no menus exists, direct the user to go and create some.
+			?>
+			<p class="nav-menu-widget-no-menus-message" <?php if ( ! empty( $menus ) ) { echo ' style="display:none" '; } ?>>
+				<?php
+				if ( $wp_customize instanceof WP_Customize_Manager ) {
+					$url = 'javascript: wp.customize.panel( "nav_menus" ).focus();';
+				} else {
+					$url = admin_url( 'nav-menus.php' );
+				}
+				?>
+				<?php echo sprintf( __( 'No menus have been created yet. <a href="%s">Create some</a>.' ), esc_attr( $url ) ); ?>
+			</p>
+			<div class="nav-menu-widget-form-controls" <?php if ( empty( $menus ) ) { echo ' style="display:none" '; } ?>>
+				<p>
+					<label for="<?php echo $this->get_field_id( 'nav_menu' ); ?>"><?php echo $title; ?></label>
+					<select id="<?php echo $this->get_field_id( 'nav_menu' ); ?>" name="<?php echo $this->get_field_name( 'nav_menu' ); ?>">
+						<option value="0"><?php _e( '&mdash; Select &mdash;', '_svbk' ); ?></option>
+						<?php foreach ( $menus as $menu ) : ?>
+							<option value="<?php echo esc_attr( $menu->term_id ); ?>" <?php selected( $nav_menu, $menu->term_id ); ?>>
+								<?php echo esc_html( $menu->name ); ?>
+							</option>
+						<?php endforeach; ?>
+					</select>
+				</p>
+				<?php if ( $wp_customize instanceof WP_Customize_Manager ) : ?>
+					<p class="edit-selected-nav-menu" style="<?php if ( ! $nav_menu ) { echo 'display: none;'; } ?>">
+						<button type="button" class="button"><?php _e( 'Edit Menu', '_svbk' ) ?></button>
+					</p>
+				<?php endif; ?>
+			</div>
+			<?php
+
+			?>
 		</p>
 	<?php
 	}
